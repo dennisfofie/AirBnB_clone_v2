@@ -1,0 +1,1 @@
+This project is about deploying our airBnB clone using fabric with python
