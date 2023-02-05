@@ -18,6 +18,7 @@ def c_is_fun(text):
         text = text.replace('_', ' ')
     return f'C {text}'
 
+@app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def python_is_cool(text='is cool'):
     if '_' in text:
@@ -25,4 +26,4 @@ def python_is_cool(text='is cool'):
     return f'Python {text}'
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
