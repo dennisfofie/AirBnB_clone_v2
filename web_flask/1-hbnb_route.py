@@ -2,6 +2,7 @@
 """
 flask model
 """
+
 from flask import Flask
 app = Flask(__name__)
 
@@ -16,8 +17,10 @@ def hello_HBNB():
 @app.route('/hbnb', strict_slashes=False)
 def get_hbnb():
     """
-    / hbnb path"""
+    / hbnb path
+    """
     return 'HBNB'
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
