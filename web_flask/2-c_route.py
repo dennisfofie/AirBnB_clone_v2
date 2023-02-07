@@ -1,25 +1,34 @@
 #!/usr/bin/python3
-# This application display c and the value of a variable in flask route
-
+"""
+flask model
+"""
 from flask import Flask
+
 app = Flask(__name__)
 
+
 @app.route('/', strict_slashes=False)
-def hello_HBNB():
-    # prints hello
-    return 'Hello HBNB'
+def hbnb():
+    """
+        / home path
+    """
+    return 'Hello HBNB!'
+
 
 @app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    # prints hbnb
+def index():
+    """
+        /hbnb path
+    """
     return 'HBNB'
 
-@app.route('/c/<text>', strict_slashes=False)
-def c_is_fun(text):
-    # print c is fun
-    if '_' in text:
-        text = text.replace('_', ' ')
-    return f'C {text}'
 
-if __name__ == '__main__':
+@app.route('/c/<text>', strict_slashes=False)
+def C_is(text):
+    """
+        /C path
+    """
+    return 'C {:s}'.format(text.replace('_', ' '))
+
+if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)

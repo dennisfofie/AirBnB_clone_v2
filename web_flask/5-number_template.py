@@ -1,43 +1,60 @@
 #!/usr/bin/python3
-''' rendering html page if it is an integer '''
+"""
+flask model
 
+"""
 from flask import Flask, render_template
+
 app = Flask(__name__)
 
+
 @app.route('/', strict_slashes=False)
-def hello_HBNB():
-    ''' print hello '''
-    return 'Hello HBNB'
+def hbnb():
+    """
+        route path
+    """
+    return 'Hello HBNB!'
+
 
 @app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    ''' print hbnb '''
+def index():
+    """
+        /hbnb path
+    """
     return 'HBNB'
 
-@app.route('/c/<text>', strict_slashes=False)
-def c_is_fun(text):
-    ''' print c is fun '''
-    if '_' in text:
-        text = text.replace('_', ' ')
-    return f'C {text}'
 
+@app.route('/c/<text>', strict_slashes=False)
+def C_is(text):
+    """
+        C path
+    """
+    return 'C {:s}'.format(text.replace('_', ' '))
+
+
+@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def python_is_cool(text='is cool'):
-    ''' print python is cool '''
-    if '_' in text:
-        text = text.replace('_', ' ')
-    return f'Python {text}'
+def python(text):
+    """
+        python path
+    """
+    return 'Python {:s}'.format(text.replace('_', ' '), strict_slashes=False)
+
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
-    ''' print number '''
-    return f'{n} is a number'
+    """
+        number path
+    """
+    return "{} is a number".format(n)
+
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
-def if_n_is_int_template(n):
-    ''' print n in the template '''
-    if type(n) is int:
-        return render_template('5-number.html', number=n)
+def number_template(n):
+    """
+        template path
+    """
+    return render_template('5-number.html', n=n)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)

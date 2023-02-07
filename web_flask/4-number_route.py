@@ -1,34 +1,47 @@
 #!/usr/bin/python3
-# passing number as a variable to the number route
+"""
+flask model
 
+"""
 from flask import Flask
+
 app = Flask(__name__)
 
+
 @app.route('/', strict_slashes=False)
-def hello_HBNB():
-    #hello
-    return 'Hello HBNB'
+def hbnb():
+    """
+    """
+    return 'Hello HBNB!'
+
 
 @app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    #print hbnb
+def index():
+    """
+    """
     return 'HBNB'
 
-@app.route('/c/<text>', strict_slashes=False)
-def c_is_fun(text):
-    # print  c is fun
-    if '_' in text:
-        text = text.replace('_', ' ')
-    return f'C {text}'
 
-@app.route('/python/<text>', strict_slashes=False)
-def python_is_cool(text='is cool'):
-    # print python is cool
-    if '_' in text:
-        text = text.replace('_', ' ')
-    return f'Python {text}'
+@app.route('/c/<text>', strict_slashes=False)
+def C_is(text):
+    """
+    """
+    return 'C is {:s}'.format(text.replace('_', ' '))
+
+
+@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
+@app.route('/python/<text>')
+def python(text):
+    """
+    """
+    return 'Python {:s}'.format(text.replace('_', ' '))
+
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
-    # print n
-    return f'{n} is a number'
+    """
+    """
+    return "{} is a number".format(n)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)

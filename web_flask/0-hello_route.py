@@ -1,14 +1,20 @@
 #!/usr/bin/python3
-# creating a route to listen at localhost port 5000 and it should output hello
-
+"""
+flask model for route
+"""
 from flask import Flask
+
+
 app = Flask(__name__)
 
 
-app.route('/', strict_slashes=False)
-def get_hello():
-    # prints hello
+@app.route('/', strict_slashes=False)
+def hbnb():
+    """
+        hbnb route page
+    """
     return 'Hello HBNB!'
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
