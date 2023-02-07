@@ -1,18 +1,22 @@
 #!/usr/bin/python3
-# This script create route /hbnb to display HBNB
-
+"""
+flask model
+"""
 from flask import Flask
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
 def hello_HBNB():
-    # prints hello
+    """
+    / home path
+    """
     return 'Hello HBNB'
 
 @app.route('/hbnb', strict_slashes=False)
 def get_hbnb():
-    # prints hbnb
+    """
+    / hbnb path"""
     return 'HBNB'
 
 if __name__ == '__main__':
