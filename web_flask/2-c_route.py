@@ -6,14 +6,17 @@ app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
 def hello_HBNB():
+    # prints hello
     return 'Hello HBNB'
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
+    # prints hbnb
     return 'HBNB'
 
 @app.route('/c/<text>', strict_slashes=False)
 def c_is_fun(text):
+    # print c is fun
     if '_' in text:
         text = text.replace('_', ' ')
     return f'C {text}'
